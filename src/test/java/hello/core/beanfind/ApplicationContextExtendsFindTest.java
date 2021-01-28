@@ -31,7 +31,7 @@ public class ApplicationContextExtendsFindTest {
     @Test
     @DisplayName("부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다")
     void findBeanByParentTypeBeanName() {
-        DiscountPolicy rateDiscountPolicy = ac.getBean(DiscountPolicy.class);
+        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy",DiscountPolicy.class);
         assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
 
@@ -46,9 +46,9 @@ public class ApplicationContextExtendsFindTest {
     @DisplayName("부모 타입으로 모두 조회하기")
     void findAllBeanByParentType() {
         Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
-        for (String key : beansOfType.keySet()) {
-
-        }
+        //for (String key : beansOfType.keySet()) {
+        //
+        //}
     }
 
     @Configuration
