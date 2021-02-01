@@ -15,18 +15,20 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
 
+
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
-        int discoutPrice = discountPolicy.discount(member, itemPrice);
+        int discountPrice = discountPolicy.discount(member, itemPrice);
 
-        return new Order(memberId, itemName, itemPrice, discoutPrice);
+        return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 
     //테스트 용도
